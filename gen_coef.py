@@ -23,7 +23,7 @@ fname_coef_xls = "coef.xls"
 in_cnt = 4
 out_cnt = 2
 
-print "Configuring Model..."
+print("Configuring Model...")
 x = tf.placeholder("float", [None, in_cnt])
 y = tf.placeholder("float", [None, out_cnt])
 W1 = tf.get_variable("W1", shape=[in_cnt, out_cnt], initializer=xaver_init(in_cnt, out_cnt))
@@ -35,7 +35,7 @@ sess = tf.Session()
 saver = tf.train.Saver()
 sess.run(init)
 
-print ('load learning coefficient ...')
+print('load learning coefficient ...')
 saver.restore(sess, fname_coefficient)
 
 ret_w = sess.run(W1)
@@ -45,7 +45,7 @@ book_out1 = xlwt.Workbook(encoding="utf-8")
 sheet_out1 = book_out1.add_sheet("sheet1")
 sheet_out2 = book_out1.add_sheet("sheet2")
 
-for i in xrange(in_cnt):
+for i in range(in_cnt):
     sheet_out1.write(i, 0, ret_w[i][0].__str__())
     sheet_out1.write(i, 1, ret_w[i][1].__str__())
 
@@ -53,4 +53,4 @@ sheet_out2.write(0, 0, ret_b[0].__str__())
 sheet_out2.write(0, 1, ret_b[1].__str__())
 
 book_out1.save(fname_coef_xls)
-print ('Finished successfully')
+print('Finished successfully')
