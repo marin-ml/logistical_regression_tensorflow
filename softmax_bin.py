@@ -103,3 +103,4 @@ for step in range(20000):
         saver.save(sess, fname_coefficient)
 
 print("Optimization Finished!")
+
