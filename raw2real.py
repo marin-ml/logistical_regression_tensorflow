@@ -24,7 +24,7 @@ def conv_data(f_in, f_out, type_data):
     w_data = []
     for row_data in reader:
         if i % 10 == 0:
-            print i
+            print(i)
         out_data = func.get_real(type_data, row_data)
         w_data.append(out_data)
         i += 1
@@ -34,8 +34,8 @@ def conv_data(f_in, f_out, type_data):
     file_out.close()
 
 
-print "Reading Type List file ..."
+print("Reading Type List file ...")
 type_list = func.load_type(fname_type_xls)
 
-print "Converting Training data 1 file ..."
+print("Converting Training data 1 file ...")
 conv_data(fname_source_csv, fname_training, type_list)

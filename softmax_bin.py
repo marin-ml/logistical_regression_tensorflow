@@ -27,7 +27,7 @@ def xaver_init(n_inputs, n_outputs, uniform = True):
 
 def acc(d1, d2):
     cnt = 0
-    for i in xrange(d1.__len__()):
+    for i in range(d1.__len__()):
         if d1[i] == d2[i]:
             cnt += 1
 
@@ -36,7 +36,7 @@ def acc(d1, d2):
 
 def sel_max(data):
     ret_ind = []
-    for i in xrange(data.__len__()):
+    for i in range(data.__len__()):
         if data[i][0] == 1:
             ret_ind.append(0)
         else:
@@ -48,7 +48,7 @@ def sel_max(data):
 x_training = []
 y_training = []
 
-print "Loading training data ..."
+print("Loading training data ...")
 file_in_y = open(fname_training_y, 'rb')
 reader_y = csv.reader(file_in_y)
 y_data = []
@@ -87,7 +87,7 @@ sess = tf.Session()
 sess.run(init)
 saver = tf.train.Saver()
 
-print ('load learning coefficient ...')
+print('load learning coefficient ...')
 saver.restore(sess, fname_coefficient)
 
 # Training cycle
@@ -98,11 +98,8 @@ for step in range(20000):
         ret1 = sel_max(ret)
         acc1 = acc(ret1, sel_max(y_training))*100
 
-        print step, sess.run(cost, feed_dict={x: x_training, y: y_training}), acc1
+        print(step, sess.run(cost, feed_dict={x: x_training, y: y_training}), acc1)
 
         saver.save(sess, fname_coefficient)
 
-print ("Optimization Finished!")
-
-
-
+print("Optimization Finished!")
