@@ -13,7 +13,7 @@ fname_source_csv = "churn-training-aug-2016.csv"
 fname_source_attr = "Attribute List.xlsx"
 fname_type_xls = "Type.xls"
 
-print "Reading Source Data file ..."
+print("Reading Source Data file ...")
 file_in = open(fname_source_csv, 'rb')
 reader = csv.reader(file_in)
 
@@ -23,7 +23,7 @@ for row_data in reader:
     All_data.append(row_data)
     ROWS += 1
 
-print "Reading Attribute List file ..."
+print("Reading Attribute List file ...")
 COLS = 5
 book_type = xlrd.open_workbook(fname_source_attr)
 sheet_in2 = book_type.sheet_by_index(0)
@@ -59,7 +59,7 @@ for j in range(COLS):
 
         sheet_out1.write(j, 2, list_count-1)
 
-print "Generating Type List file ..."
+print("Generating Type List file ...")
 book_out1.save(fname_type_xls)
 
-print "Generated Type List file successfully!"
+print("Generated Type List file successfully!")
